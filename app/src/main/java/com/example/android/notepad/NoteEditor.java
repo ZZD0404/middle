@@ -95,7 +95,7 @@ public class NoteEditor extends Activity {
             mRect = new Rect();
             mPaint = new Paint();
             mPaint.setStyle(Paint.Style.STROKE);
-            mPaint.setColor(0x800000FF);
+            mPaint.setColor(context.getResources().getColor(R.color.editor_line));
         }
 
         /**
@@ -444,8 +444,32 @@ public class NoteEditor extends Activity {
             finish();
         } else if (id == R.id.menu_revert) {
             cancelNote();
+        } else if (id == R.id.menu_share) {
+            shareNote();
+            return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    /**
+     * 通过系统分享面板把当前笔记以纯文本形式导出 / 分享出去。
+     */
+    private final void shareNote() {
+        String title = "";
+        if (mCursor != null) {
+            int colTitleIndex = mCursor.getColumnIndex(NotePad.Notes.COLUMN_NAME_TITLE);
+            if (colTitleIndex >= 0) {
+                title = mCursor.getString(colTitleIndex);
+            }
+        }
+        String body = mText.getText().toString();
+
+        Intent send = new Intent(Intent.ACTION_SEND);
+        send.setType("text/plain");
+        send.putExtra(Intent.EXTRA_SUBJECT, title);
+        send.putExtra(Intent.EXTRA_TITLE, title);
+        send.putExtra(Intent.EXTRA_TEXT, title + "\n\n" + body);
+        startActivity(Intent.createChooser(send, getString(R.string.share_title)));
     }
 
 //BEGIN_INCLUDE(paste)

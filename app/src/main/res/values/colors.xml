@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 主色调：沉稳的靛蓝 -->
+    <color name="primary">#3F51B5</color>
+    <color name="primary_dark">#303F9F</color>
+    <color name="accent">#FF5722</color>
+
+    <!-- 列表与卡片 -->
+    <color name="background">#F2F3F7</color>
+    <color name="card_background">#FFFFFF</color>
+    <color name="title_text">#1F2330</color>
+    <color name="time_text">#8A909F</color>
+    <color name="divider">#E4E7EE</color>
+
+    <!-- 编辑器 -->
+    <color name="editor_background">#FFFDF6</color>
+    <color name="editor_line">#669ECB</color>
+</resources>
